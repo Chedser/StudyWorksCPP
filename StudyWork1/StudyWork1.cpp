@@ -88,6 +88,6 @@ void SetResultOfExpressions(double a, double x, double* resultValues) {
 	double Y = cos(pow(x, 3) + pow(a, 3));
 	double Z = atan(sqrt(2*x + a));
 	resultValues[0] = Y;
-    resultValues[1] = Z;
+        resultValues[1] = Z;
 
 }
