@@ -1,0 +1,2 @@
+all:
+    g++ IOManager_h.h IOManager_c.cpp CoffeeMachine_h.h CoffeeMachine_c.cpp StudyWork11.cpp -o sw11
