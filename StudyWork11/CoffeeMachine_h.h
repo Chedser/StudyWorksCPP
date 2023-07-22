@@ -1,7 +1,6 @@
 #ifndef COFFEEMACHINE_H
 #define COFFEEMACHINE_H
 
-
 #define INGREDIENTS_COUNT 3
 
 #include <iostream>
@@ -44,7 +43,6 @@ namespace Morozov {
     };
 
     class CoffeeMachine {
-
         State state = State::SwitchingOn; // Текущее состояние кофемашины
 
         /* Начальный обЪем емкостей в миллилитрах */
@@ -53,15 +51,12 @@ namespace Morozov {
         const int initWaterVolume = 3000; // Начальный объем емкости с водой
         
         int currentReceiptNumber = 0;
-
         int currentCofeeVolume = 0; // Текущий объем емкости с кофе
         int currentMilkVolume = 0; // Текущий объем емкости с  молоком
         int currentWaterVolume = 0; // Текущий объем емкости с баком
 
         int enoughFlagsVolume[INGREDIENTS_COUNT] = { 1, 1, 1 }; // 1 - ингредиент есть, 0 - нет; 0 - кофе, 1 - молоко, 2 - вода
-
         int timer = 1;
-
         string fileName = "cm.txt"; // Файл для хранения ингредиентов
 
     public:
