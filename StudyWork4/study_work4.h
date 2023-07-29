@@ -15,12 +15,9 @@ using namespace std;
 enum RangeType { First, Second, Third } rangeType;
 
 namespace Morozov {
-
     /* Возведение в степень */
     double raiseToPow(double x, int power) {
-      
-        if (x == 0 && power == 0) { throw 1; }
-
+    if (x == 0 && power == 0) { throw 1; }
         double result = 1.0;
         for (int i = 1; i <= power; i++) {
             result = result * x;
@@ -47,19 +44,14 @@ namespace Morozov {
     
     /* Абсолютное значение */
     double abs(double digit) {
-    
         if (digit < 0) {
-        
-            digit = -digit;
+              digit = -digit;
         }
-
         return digit;
-
     }
 
     /* Косинус */
     double cosinus(double x){
-
         double k = 0;
         double e = 0.1, d = 1, s = 1;
   
@@ -75,184 +67,121 @@ namespace Morozov {
             d = (-d) * x * x / ((2 * k - 1) * (2 * k));
             s = s + d;
         }
-
         return s;
     }
 
     /* Минимальное значение */
     double min(double x, double y) {
-    
         double min = x;
 
         if (x > y) {
-        
-            min = y;
-
+              min = y;
         }
-
         return min;
-
     }
 
     /* Заплнение интервала аргументов функции*/
     void FillRange(double* arr, double initX, double endX, double step = 0.1) {
-    
-        int j = 0;
+          int j = 0;
 
         for (double i = initX; i <= endX; i += step) {
-        
-            arr[j] = i;
-
+             arr[j] = i;
             ++j;
-
         }
-
     }
 
     /* Количество элементов в интервале */
     int GetCountOfElementsInRange(double initX, double endX, double step = 0.1) {
-
         int j = 0;
 
         for (double i = initX; i <= endX; i += step) {
-
             ++j;
-
         }
-
-        return j;
-
+       return j;
     }
 
     /* Две перегруженные функции отображения интервала */
     void ShowRange(double initX, double endX, double step = 0.1) {
-
         for (double i = initX; i <= endX; i += step) {
-
             cout << i << "\n";
-
         }
-  
-    }
-    void ShowRange(double* arr, int count) {
+     }
     
-        for (int i = 0; i < count; i++) {
-
+void ShowRange(double* arr, int count) {
+          for (int i = 0; i < count; i++) {
             cout << arr[i] << "\n";
-
         }
-
     }
 
     /* Вычисление значений функции */
     void SetValues(double* range, int count, double* values, RangeType rangeType = Third) {
-    
         double value = 0.0;
 
         if (rangeType == First) {
-        
-            for (int i = 0; i < count; i++) {
-                 
-                values[i] = arctan(range[i]);
+          for (int i = 0; i < count; i++) {
+                  values[i] = arctan(range[i]);
             }
-
         }
         else if (rangeType == Second) {
-        
-            for (int i = 0; i < count; i++) {
-
-                values[i] = cosinus(range[i]);
+             for (int i = 0; i < count; i++) {
+               values[i] = cosinus(range[i]);
             }
-
         }
         else {
-        
             for (int i = 0; i < count; i++) {
-
-                values[i] = min(arctan(range[i]), cosinus(range[i]));
+               values[i] = min(arctan(range[i]), cosinus(range[i]));
             }
-        
-        }
-
+          }
     }
 
     /* Отображение значений функции */
     void ShowValues(double* range, double* values, int count) {
-    
         for (int i = 0; i < count; i++) {
-        
             printf("%d : %3.1f : %3.3f\n", (i + 1), range[i], values[i]);
-
         }
-
     }
 
     /* Определение монотонности функции */
     int IsRising(double* values, int count) {
-    
         int result = 0;
         int risingCount = 0;
         int lowingCount = 0;
      
         for (int i = 1; i < count; i++) {
-        
-            if (values[i] > values[i - 1]) {
-            
+             if (values[i] > values[i - 1]) {
                 ++risingCount;
-
-            }
+           }
             else if (values[i] < values[i - 1]) {
-            
-                ++lowingCount;
-
+               ++lowingCount;
             }
-
         }
 
         if (risingCount > 0 && lowingCount == 0) {
-        
-            result = 1;
-
+                  result = 1;
         }
         else if(risingCount == 0 && lowingCount > 0) {
-        
             result = 0;
-
         }
         else {
-        
-            result = 2;
-
+           result = 2;
         }
-
         return result;
-
     }
 
     /* Отображение сообщения о монотоности функции */
     void CheckRising(double* values, double* range, int count) {
-    
-        int result = IsRising(values, count);
+       int result = IsRising(values, count);
 
         if (result == 1) {
-        
-            cout << "Функция монотонно возрастает на промежутке [" << range[0] << "," << range[count - 1] << "]\n";
-
+           cout << "Функция монотонно возрастает на промежутке [" << range[0] << "," << range[count - 1] << "]\n";
         }
         else if(result == 0) {
-        
             cout << "Функция монотонно убывает на промежутке [" << range[0] << "," << range[count - 1] << "]\n";
-
         }
         else {
-        
-            cout << "Функция не монотонна на промежутке [" << range[0] << "," << range[count - 1] << "]\n";
-
+                    cout << "Функция не монотонна на промежутке [" << range[0] << "," << range[count - 1] << "]\n";
         }
-
         cout << "\n";
-
     }
-
 }
 #endif
