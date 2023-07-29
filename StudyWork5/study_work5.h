@@ -13,20 +13,16 @@ string STR_TO_FILE[] = { "Stroustrup is best known for his work on C++.", "In 19
 
 /* Поиск слов в строке*/ 
 bool IsFound(string word1, string word2, string str) {
-
 	if (str.find(word1) == -1 || str.find(word2) == -1) {
 		return false;
 	}
-
 	return true;
-
 }
 
 /* Получить индексы начала и конца, вставленной строки */
 int* GetIndexes(string word1, string word3, string str){
-	
 		int begin = str.find(word1);
-		int end =	begin + word3.size();
+		int end = begin + word3.size();
 			
 		int* indexes = new int[2];
 
@@ -35,16 +31,12 @@ int* GetIndexes(string word1, string word3, string str){
 		indexes[1] = end;
 	
 return indexes;
-
 }
 
 /* Получение новой строки после вставки слова */
 string InsertWord(string str, string word3, int index) {
-	
 		string newStr = str.insert(index, " " + word3 + " ");
-
 		return newStr;
-
 }
 #endif
 
