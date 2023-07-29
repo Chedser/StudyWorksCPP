@@ -12,7 +12,7 @@
 Выводит на экран и в файл содержимое массива в следующем виде:
 i : X[i] : Y[i] : &X[i] : &Y[i]
 * Дата создания : 2021 / 10 / 25
-* Автор : Morozov Oleg
+* Автор : Vectorflex
 * Платформа : OS Linux Mint
 ******************************************************************/
 
@@ -64,23 +64,18 @@ int main(){
     }
 
     cout << "Значения функции\n";
-
     cout << "     X\t" << "  Y\t" << " &X\t" << "   &Y\n";
 
     float currentX = initX; // Текущее значение аргумента функции
 
     //Вычисление, отображение и запись в файл значений функции
     for (int i = 0; i < PAIRS_COUNT; i++) {
-    
         cout << i + 1 << " : ";
         outf << i + 1 << " : ";
 
         for (int j = 0; j < 4; j++) {
-
             switch (j) {
-
             case 0: pairs[i][j] = currentX; 
-                
             cout << pairs[i][j] << " : "; 
             outf << pairs[i][j] << " : ";
             break;
@@ -88,32 +83,24 @@ int main(){
                 cout << pairs[i][j] << " : ";
                 outf << pairs[i][j] << " : ";
                 if (pairs[i][j] < min) { // min
-
                     min = pairs[i][j];
-
                 }
-
                 if (pairs[i][j] > max) { // max
-
                     max = pairs[i][j];
                 }
-
                 break;
             case 2:  cout << &pairs[i][j] << " : "; 
                 outf << &pairs[i][j] << " : ";
-
                 break;
             case 3: cout << &pairs[i][j]; 
                     outf << &pairs[i][j];
                 break;
-
             }
         }
 
         currentX += step;
         cout << "\n";
         outf << "\n";
-
     }
 
     cout << "Наименьшее значение функции на интервале [" << initX << ", " << endX << "]: " << min << "\n";
