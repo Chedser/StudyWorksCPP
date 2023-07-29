@@ -9,7 +9,7 @@
 Находит минимальное и максимальное значение, принимаемое функцией на заданном интервале.
 Вычисляет среднее арифметическое таблицы значений
 * Дата создания : 2021 / 10 / 23
-* Автор : Morozov Oleg
+* Автор : Vectorflex
 * Платформа : OS Linux Mint
 ******************************************************************/
 
@@ -38,7 +38,6 @@ template<typename T> T max(vector<T>); // Прототип функции нах
 template<typename T> T mean(vector<T>); // Прототип функции нахождения среднего арифметического 
 
 int main(){
-
     setlocale(LC_ALL, ""); // Настройка отображения кириллицы
 
     /* Приветствие */
@@ -64,43 +63,33 @@ int main(){
     printf("%.2f\n", mean(listY));
 
     return 0;
-
 }
 
 /* Определения функций */
 vector<float> GetRange(float initX, float endX, float step) {
-
     vector<float> rangeList = {};
 
     for (float i = initX; i <= endX; i += step) {
-    
-        rangeList.push_back(i);
-
+       rangeList.push_back(i);
     }
 
     return rangeList;
 }
 
 vector<double> GetValues(vector<float> l) {
-
     vector<double> listValues;
 
     double currentValue = 0.0f;
 
     for (float i : l) {
-
         currentValue = 3 * pow(i, 5) - 3/i - sqrt(pow(i, 3)) + 10/(pow(i, 5));
-    
         listValues.push_back(currentValue);
-
     }
 
     return listValues;
-
 }
 
 template<typename T, typename C>  void ShowValues(vector<T> x, vector<C> y) {
-
     for (int i = 0; i < x.size(); i++) {
         printf("%d : %.2f : %.2f\n", i + 1, x[i], y[i]);
     }
@@ -108,45 +97,34 @@ template<typename T, typename C>  void ShowValues(vector<T> x, vector<C> y) {
 }
 
 template<typename T>  T min(vector<T> l) {
-
     T min = l.front();
     
     for (T i: l) {
-
         if (i < min) {
-
             min = i;
         }
     }
     return min;
-
 }
 
 template<typename T> T max(vector<T> l) {
-
     T max = l.front(); 
 
     for (T i : l) {
-
         if (i > max) {
-
             max = i;
         }
     }
    
-
     return max;
-
 }
 
 template<typename T> T sum(vector<T> l) {
-
     if (l.size() == 0) { return 0; }
 
     T sum = 0;
 
     for (T i : l) {
-
         sum += i;
     }
 
@@ -156,7 +134,5 @@ template<typename T> T sum(vector<T> l) {
 
 template<typename T> T mean(vector<T> l) {
     if (l.size() == 0) { return 0; }
-   
     return sum(l) / l.size();
-
 }
