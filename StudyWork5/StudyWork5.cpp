@@ -10,7 +10,7 @@
 тексте.
 Записывает в файл новый текст
 * Дата создания : 2021 / 10 / 29
-* Автор : Morozov Oleg
+* Автор : Vectorflex
 * Платформа : OS Linux Mint
 ******************************************************************/
 
@@ -27,8 +27,7 @@ using std::cout;
 using std::cin;
 using namespace std;
 int main(){
-   
-	setlocale(LC_ALL, "");
+   	setlocale(LC_ALL, "");
 
 	ofstream fout("test.txt"); // Создание потока для записи файл
 
@@ -66,7 +65,6 @@ int main(){
 	if (cin.bad()) {
 		cout << "Ошибка ввода\n";
 		exit(1);
-
 	}
 
 	ifstream fin("test.txt"); // Создание потока для чтения из файла
@@ -74,7 +72,6 @@ int main(){
 	if (!fin.is_open()) {
 		cout << "Ошибка открытия файла\n";
 		exit(1);
-
 	}
 
 	string textFromFile;
@@ -95,11 +92,8 @@ int main(){
 		exit(1);
 	} 
 
-
 	int* indexes = new int[2];// Индексы начала и конца вставленного слова
-
 	indexes = GetIndexes(word1,wordToInsert, textFromFile); // Получаем индексы
-
 	string newText = InsertWord(textFromFile, wordToInsert, indexes[1]); // Новая строка после вставки
 	
 	cout << "\nНовый текст\n";
@@ -120,5 +114,4 @@ int main(){
 	fout.close(); // Закрываем файловый поток
 
 	return 0;
-
 	}
