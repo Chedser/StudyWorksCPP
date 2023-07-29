@@ -7,7 +7,7 @@
 * Описание :  Программа вычисляет и печатает таблицу значений функции f(x) и определяет, 
 является ли она монотонной на интервале [a, b] при дискретном увеличении аргумента от x=a с шагом h.
 * Дата создания : 2021 / 10 / 27
-* Автор : Morozov Oleg
+* Автор : Vectorflex
 * Платформа :OS Linux Mint
 ******************************************************************/
 
@@ -30,7 +30,6 @@ double* minRange;
 double* values;
 
 int main(){
-
 	setlocale(LC_ALL, "");
 
 	/* Приветствие */
@@ -71,13 +70,12 @@ int main(){
 	 minRange = new double[rangeCount]; 
 	 values = new double[rangeCount];
 
-	 FillRange(minRange, 1, 9.9, STEP);
-
+	FillRange(minRange, 1, 9.9, STEP);
 	SetValues(minRange, rangeCount, values);
 
 	cout << "Значения третьей функции \n";
 	ShowValues(minRange, values, rangeCount);
 	CheckRising(values, minRange, rangeCount);
-
+	return 0;
 }
 
