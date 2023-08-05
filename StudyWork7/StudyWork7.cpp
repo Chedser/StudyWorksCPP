@@ -14,7 +14,6 @@ StudyWork7.cpp - Листинг программы для 7-ой лаборат�
 #include "sw7_h.h"
 
 struct CmdArgs{
-
 	string commandType = "";
 	string recordsCountStr = "";
 	string fileName = "";
@@ -35,7 +34,6 @@ cout << greetings;
     if(argc < 2 ){
         cout << "Запуск без аргументов\n";
         cout << GetManual();
-
         exit(1);
     }
 
@@ -52,9 +50,7 @@ cout << greetings;
 
     //Пользователь ввел 4 аргумента
     if((cmd->recordsCountStr.size() > 0 && cmd->fileName.size() > 0) && IsDigit(cmd->recordsCountStr)) {
-
     int recordsCount = stoi(cmd->recordsCountStr); // Количество записей в число
-
         if(cmd->commandType == "-c"){ // Команда создания записей
             CreateRecords(recordsCount, cmd->fileName);
             exit(0);
@@ -68,10 +64,9 @@ cout << greetings;
     
     cout << "Неизвестная команда\n";
     cout << GetManual();
-
     } catch(const std::logic_error &str){
-    cout << "Неизвестная команда\n";
-    cout << GetManual();
+    	cout << "Неизвестная команда\n";
+    	cout << GetManual();
     }
 
     return 0;
