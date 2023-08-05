@@ -1,6 +1,6 @@
 #include "CoffeeMachine_h.h"
 
-using namespace Morozov;
+using namespace Vectorflex;
 
 CoffeeMachine::CoffeeMachine() {
     try {
@@ -66,7 +66,6 @@ void CoffeeMachine::UpdateIngredientsVolume() {
     int i = 0;
 
     while (i != INGREDIENTS_COUNT) {
- 
         switch (i) {
         case (int)Ingredients::Coffee: fout <<  initCofeeVolume << "\n";  break;
         case (int)Ingredients::Milk: fout << initMilkVolume << "\n"; break;
