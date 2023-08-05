@@ -1,14 +1,10 @@
-
 #ifndef IOMANAGER_C
 #define IOMANAGER_C
-
 
 #include "CircuitElement_h.h"
 #include "IOManager_h.h"
 
-
 string IOManager::GetManual() {
-
     string manual = "Поддерживаемые опции запуска:\n\
     -help или -h - запуск программы в режиме получения справки\n\
     -c [N] [file_name] [circuit_element_type] - запуск программы в режиме создания электронной\n\
@@ -25,92 +21,69 @@ string IOManager::GetManual() {
     текстового фала file_name\n";
 
     return manual;
-
 } 
-bool IOManager::IsDigit(string str) {
 
-    if (str.empty()) { return false; }
+bool IOManager::IsDigit(string str) {
+   if (str.empty()) { return false; }
 
     bool isDigit = true;
-
     for (char s : str) {
-
         if (!isdigit(s)) {
-
             isDigit = false;
             break;
-
         }
-
     }
-
     return isDigit;
-
 }
-bool IOManager::FileIsEmpty(string fileName) {
 
+bool IOManager::FileIsEmpty(string fileName) {
     ifstream fin(fileName);
 
     if (!fin.is_open()) { throw std::runtime_error("Ошибка открытия файла\n"); }
-
     int symCount = 0;
     char c;
 
     while (!fin.eof()) {
-
         fin >> c;
         ++symCount;
-
     }
 
     fin.close();
-
     return (symCount == 1 || symCount == 0) ? true : false;
-
 }
-int IOManager::GetRecordsCount(string  fileName) {
 
+int IOManager::GetRecordsCount(string  fileName) {
     ifstream fin(fileName);
 
     if (!fin.is_open()) { throw std::runtime_error("Ошибка открытия файла\n"); }
-
     string str;
-
     int recordsCount = 0;
-
     while (getline(fin, str)) {
-
         ++recordsCount;
-
     }
 
     fin.close();
-
     return recordsCount;
-
 }
+
 vector<string> IOManager::SplitString(string str, string delimiter) {
 
     std::vector<std::string> splittedString;
     int startIndex = 0;
     int  endIndex = 0;
-    while ((endIndex = str.find(delimiter, startIndex)) < str.size())
-    {
+    while ((endIndex = str.find(delimiter, startIndex)) < str.size()){
         std::string val = str.substr(startIndex, endIndex - startIndex);
         splittedString.push_back(val);
         startIndex = endIndex + delimiter.size();
     }
-    if (startIndex < str.size())
-    {
+    if (startIndex < str.size()){
         std::string val = str.substr(startIndex);
         splittedString.push_back(val);
     }
     return splittedString;
-
 }
 
 void IOManager::InputRecord(std::ostream& stream, const char* delimiter, int circuitElementType) {
-
     CircuitElementProperties circuitElementProperties;
 
     cout << "Введите напряжение\n";
@@ -124,7 +97,6 @@ void IOManager::InputRecord(std::ostream& stream, const char* delimiter, int cir
     Triode* triode;
 
     switch (circuitElementType){
-
     case 1:  
         cout << "Введите сопротивление\n";
         cin >> circuitElementProperties.resistance;
@@ -198,67 +170,50 @@ void IOManager::InputRecord(std::ostream& stream, const char* delimiter, int cir
         resistor = new Resistor(circuitElementProperties.voltage, circuitElementProperties.resistance);
         stream << "Resistor;" << "V" << resistor->GetVoltage() << delimiter << "R" << resistor->GetResistance() << delimiter <<
             "C" << resistor->GetCurrent() << delimiter << "E" << resistor->GetEnergy() << '\n';
-
         break;
     }
-
 }
 
 void IOManager::CreateRecords(int recordsCount, string fileName, const char* delimiter, int circuitElementType) {
-
     ofstream fout(fileName, std::ios::out | std::ios::app);
 
     if (!fout.is_open()) {
-
         cout << "Ошибка открытия файла\n";
         exit(1);
-
     }
 
     switch (circuitElementType) {
-
     case 1: cout << "Резисторы " << recordsCount << "\n";break;
     case 2: cout << "Проводники " << recordsCount << "\n";   break;
     case 3: cout << "Источники питания " << recordsCount << "\n"; break; 
     case 4: cout << "Конденсаторы " << recordsCount << "\n"; break;
     case 5: cout << "Индукторы " << recordsCount << "\n"; break;
     case 6: cout << "Биполярные транзисторы " << recordsCount << "\n"; break;
-
     default:
         cout << "Резисторы " << recordsCount << "\n";
         break;
     }
 
-
     for (int i = 0; i < recordsCount; i++) {
-
         cout << "\nВведите запись " << i + 1 << "\n";
-
         InputRecord(fout, delimiter, circuitElementType);
-
     }
 
     fout.flush();
     fout.close();
-
 }
 
 void IOManager::PrintRecords(int  recordsCount, string fileName, const char* delimiter) {
-
     ifstream fin(fileName);
 
     if (!fin.is_open()) {
-
         cout << "Ошибка открытия файла\n";
         exit(1);
-
     }
 
     if (FileIsEmpty(fileName)) {
-
         cout << "Файл " << fileName << " пуст\n";
         exit(1);
-
     }
 
     int recordsCountInFile = GetRecordsCount(fileName); // Количество записей в файле
@@ -266,9 +221,7 @@ void IOManager::PrintRecords(int  recordsCount, string fileName, const char* del
 
      // Еси пользователь запросил больше чем надо записей или не больше нуля
     if ((recordsCountToPrint > recordsCountInFile) || recordsCountToPrint <= 0) {
-
         recordsCountToPrint = recordsCountInFile;
-
     }
 
     int currentRecordsCount = 0; // Счетчик для записей
@@ -276,18 +229,12 @@ void IOManager::PrintRecords(int  recordsCount, string fileName, const char* del
     string str;
 
     while (currentRecordsCount != recordsCountToPrint) {
-
         getline(fin, str);
-
         vectorStr = SplitString(str, delimiter);
-
         for (string str : vectorStr) { cout << str << " "; }
-
         cout << "\n";
         ++currentRecordsCount;
     }
-
     fin.close();
-
 }
 #endif
