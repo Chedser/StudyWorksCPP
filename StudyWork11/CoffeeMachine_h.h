@@ -21,7 +21,7 @@ using std::ifstream;
 using namespace std::this_thread;
 using namespace std::chrono;
 
-namespace Morozov {
+namespace Vectorflex {
     enum class State { // Состояние кофемашины
         SwitchingOn = 1, // Запуск
         Reading, // Ожидание ввода
