@@ -16,7 +16,7 @@
 #include <locale>
 #include "study_work4.h" // Заголовочный файл пространства имен Morozov
 
-using namespace Morozov;
+using namespace Vectorflex;
 
 int rangeCount = 0; // Количество аргументов диапазона текущей функции
 const double STEP = 0.1; // Шаг приращения
