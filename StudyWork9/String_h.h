@@ -45,7 +45,6 @@ public:
     friend bool operator!= (const String& s21, const String& s2);
     friend bool operator> (const String& s1, const String& s2);
     friend bool operator< (const String& s1, const String& s2);
-
 };
 
 void String::SetString(const char* str) { pMem = str;}
@@ -90,6 +89,7 @@ bool operator> (const String& s1, const String& s2) {
     string s2_str(s2.pMem);
     return s1_str > s2_str;
 }
+
 bool operator< (const String& s1, const String& s2) {
     string s1_str(s1.pMem);
     string s2_str(s2.pMem);
