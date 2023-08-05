@@ -15,32 +15,22 @@ int strIndex(const char* str, const char* need) {
         if (j == need_size)
             return i;
     }
-
     return -1;
 }
 
 void CheckIndex(int index, char* str) {
-
     if (index == -1) {
-    
-        printf("Слово %s не найдено в строке\n", str);
+        printf("Г‘Г«Г®ГўГ® %s Г­ГҐ Г­Г Г©Г¤ГҐГ­Г® Гў Г±ГІГ°Г®ГЄГҐ\n", str);
         exit(1);
-
     }
     else {
-        
-        printf("Слово %s найдено в строке на позиции %d\n", str, index);
-
+         printf("Г‘Г«Г®ГўГ® %s Г­Г Г©Г¤ГҐГ­Г® Гў Г±ГІГ°Г®ГЄГҐ Г­Г  ГЇГ®Г§ГЁГ¶ГЁГЁ %d\n", str, index);
     }
-
 }
 
 void CheckWordOrder(int i1, int i2) {
-
     if (i1 >= i2) {
-        printf("Неправильный порядок слов\n");
+        printf("ГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© ГЇГ®Г°ГїГ¤Г®ГЄ Г±Г«Г®Гў\n");
         exit(1);
     }
-
 }
-
