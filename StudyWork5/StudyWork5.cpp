@@ -30,7 +30,6 @@ int main(){
    	setlocale(LC_ALL, "");
 
 	ofstream fout("test.txt"); // Создание потока для записи файл
-
 	/* Проверка на ошибку открытия файла */
 	if (!fout.is_open()) {
 		cout << "Ошибка открытия файла\n";
@@ -68,7 +67,6 @@ int main(){
 	}
 
 	ifstream fin("test.txt"); // Создание потока для чтения из файла
-
 	if (!fin.is_open()) {
 		cout << "Ошибка открытия файла\n";
 		exit(1);
@@ -76,17 +74,15 @@ int main(){
 
 	string textFromFile;
 	string line = "";
-
 	/* Чтение из файла */
 	while (getline(fin, textFromFile)){
 		  line += textFromFile;
 	}
 
 	textFromFile = line;
-		
 	fin.close(); // Закрытие файлового потока
 
-	/* Проверка наприсутствие слов в тексте */
+	/* Проверка на присутствие слов в тексте */
 	if (!IsFound(word1, word2, textFromFile)) {
 		cout << "Слова не обнаружены\n";
 		exit(1);
