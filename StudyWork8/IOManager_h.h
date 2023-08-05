@@ -1,7 +1,6 @@
 #ifndef IOMANAGER_H
 #define IOMANAGER_H
 
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,17 +15,13 @@ using std::string;
 using std::ofstream;
 using std::ifstream;
 
-namespace Morozov{
-
+namespace Vectorflex{
 class FileInfo{
-
 	public:
 	 int totalRecordsCount = 0;
-
 };
 
 class IOManager{
-	
 public:
 	static string GetManual();
 	static bool IsDigit(string);
@@ -36,8 +31,6 @@ public:
 	static void PrintRecords(string, int);
 	static bool FileIsEmpty(string);
 	static unsigned int GetRecordsCount(string);
-
 };
-
 }
 #endif
