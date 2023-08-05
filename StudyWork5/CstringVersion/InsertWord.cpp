@@ -47,13 +47,10 @@ int main(){
 	fout.close();
 
 	textSize = strlen(text);
-	
 	textFromFile = (char*)malloc(sizeof(char) * textSize);
-
 	ifstream fin("file.txt");
 
 	if (!fin.is_open()) {
-
 		printf("Ошибка открытия файла");
 		exit(1);
 	}
@@ -63,82 +60,55 @@ int main(){
 	fin.close();
 
 	printf("Текст из файла\n");
-
 	printf("%s\n\n",textFromFile);
 	
 	/* ВВОД ПОЛЬЗОВАТЕЛЯ */
-
 	printf("Введите первое слово\n");
-
 	scanf("%s", wordLeft);
 	
 	wordLeftIndex = strIndex(text, wordLeft);
-
 	CheckIndex(wordLeftIndex, wordLeft);
-		
 	printf("Введите второе слово\n");
-
 	scanf("%s", wordRight);
 	
 	wordRightIndex = strIndex(text, wordRight);
-
 	CheckIndex(wordRightIndex, wordRight);
-
 	CheckWordOrder(wordLeftIndex, wordRightIndex);
 
 	wordLeftSize = strlen(wordLeft);
 	wordRightSize = strlen(wordRight);
-
 	printf("Введите слово, которое нужно вставить\n");
-
 	scanf("%s", wordToInsert);
-
 	wordToInsertSize = strlen(wordToInsert);
-
 	newTextSize = textSize + wordToInsertSize;
 	
 	/* ГЛАВНАЯ ЛОГИКА ПРОГРАММЫ */
 char* newText = (char*)malloc(sizeof(char) * newTextSize);
-
 int firstHalfSize = newTextSize;
-
 char* firstHalf = (char*)malloc(sizeof(char) * firstHalfSize);
 
 /* Получаем первую половину текста со вставленным словом */
 for (int i = 0, j = 0; i < firstHalfSize; i++) {
-
 	if (i < (wordLeftIndex + wordLeftSize + 1)) {
-	
 		firstHalf[i] = textFromFile[i];
-
-	}
-	
-	else {
-	
+	}else {
 		firstHalf[i] = wordToInsert[j];
 		++j;
-
 	}
-
 }
 
 int secondHalfSize =  textSize - (wordLeftSize + wordLeftIndex + magicNumber);
-
 char* secondHalf = (char*)malloc(sizeof(char) * secondHalfSize);
 
 /* Получаем вторую половину текста */
 for (int i = wordLeftIndex + wordLeftSize, j = 0; i < textSize; i++, j++) {
-
 	secondHalf[j] = textFromFile[i];
-
 }
 
 strncat(firstHalf, secondHalf, secondHalfSize + magicNumber); /* Объединяем строки */
-
 fout.open("file.txt", std::ios_base::trunc); 
 
 if (!fout.is_open()) {
-
 	printf("Ошибка открытия файла");
 	exit(1);
 }
@@ -148,13 +118,10 @@ fout.flush();
 fout.close();
 
 newTextSize = strlen(firstHalf);
-
 textFromFile = (char*)malloc(sizeof(char) * newTextSize);
-
 fin.open("file.txt");
 
 if (!fin.is_open()) {
-
 	printf("Ошибка открытия файла");
 	exit(1);
 }
@@ -164,10 +131,7 @@ fin.getline(textFromFile, newTextSize + 1);
 fin.close();
 
 printf("Новый текст\n");
-
 printf("%s\n", textFromFile);
-
 	return 0;
-
 }
 
