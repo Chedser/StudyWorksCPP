@@ -73,7 +73,6 @@ namespace Vectorflex {
     /* Минимальное значение */
     double min(double x, double y) {
         double min = x;
-
         if (x > y) {
               min = y;
         }
@@ -82,8 +81,7 @@ namespace Vectorflex {
 
     /* Заплнение интервала аргументов функции*/
     void FillRange(double* arr, double initX, double endX, double step = 0.1) {
-          int j = 0;
-
+        int j = 0;
         for (double i = initX; i <= endX; i += step) {
              arr[j] = i;
             ++j;
@@ -93,7 +91,6 @@ namespace Vectorflex {
     /* Количество элементов в интервале */
     int GetCountOfElementsInRange(double initX, double endX, double step = 0.1) {
         int j = 0;
-
         for (double i = initX; i <= endX; i += step) {
             ++j;
         }
@@ -116,7 +113,6 @@ void ShowRange(double* arr, int count) {
     /* Вычисление значений функции */
     void SetValues(double* range, int count, double* values, RangeType rangeType = Third) {
         double value = 0.0;
-
         if (rangeType == First) {
           for (int i = 0; i < count; i++) {
                   values[i] = arctan(range[i]);
