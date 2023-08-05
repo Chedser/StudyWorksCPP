@@ -44,7 +44,6 @@ int main(){
     const  char* greeting = "***********************************************************\n\
 * Нижегородский государственный технический университет *\n\
 * Лабораторная работа №2. Задание 2. Вариант 7. *\n\
-* Выполнил студент группы 21 - ИВТз Морозов Олег *\n\
 * **********************************************************\n";
     printf("%s",greeting);
 
@@ -72,20 +71,17 @@ vector<float> GetRange(float initX, float endX, float step) {
     for (float i = initX; i <= endX; i += step) {
        rangeList.push_back(i);
     }
-
     return rangeList;
 }
 
 vector<double> GetValues(vector<float> l) {
     vector<double> listValues;
-
     double currentValue = 0.0f;
 
     for (float i : l) {
         currentValue = 3 * pow(i, 5) - 3/i - sqrt(pow(i, 3)) + 10/(pow(i, 5));
         listValues.push_back(currentValue);
     }
-
     return listValues;
 }
 
@@ -93,7 +89,6 @@ template<typename T, typename C>  void ShowValues(vector<T> x, vector<C> y) {
     for (int i = 0; i < x.size(); i++) {
         printf("%d : %.2f : %.2f\n", i + 1, x[i], y[i]);
     }
-
 }
 
 template<typename T>  T min(vector<T> l) {
@@ -115,7 +110,6 @@ template<typename T> T max(vector<T> l) {
             max = i;
         }
     }
-   
     return max;
 }
 
@@ -123,13 +117,10 @@ template<typename T> T sum(vector<T> l) {
     if (l.size() == 0) { return 0; }
 
     T sum = 0;
-
     for (T i : l) {
         sum += i;
     }
-
     return sum;
-
 }
 
 template<typename T> T mean(vector<T> l) {
