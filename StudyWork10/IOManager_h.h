@@ -1,7 +1,6 @@
 #ifndef IOMANAGER_H
 #define IOMANAGER_H
 
-
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -17,9 +16,7 @@ using std::ifstream;
 using std::vector;
 
 class IOManager {
-
 public:
-
     static  string GetManual(); // Справка
     static bool IsDigit(string); // Проверка на цифру
     static bool FileIsEmpty(string); // Проверка файла на пустоту
