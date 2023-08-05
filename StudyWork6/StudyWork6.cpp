@@ -39,14 +39,11 @@ int main(int argc, char** argv){
         printf("Ошибка открытия файла \n");
         exit(1);
     }
-
     printf("Файл %s создан.\nВведите текст для записи и нажмите сочетание клавиш окончания ввода\n", fileName);
-
     for (;;){
         if ((ch = getchar()) == EOF) break;
         fputc(ch, fp);
      }
-    
     fclose(fp);
     printf("\nТекст записан в файл\n");
 
