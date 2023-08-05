@@ -14,7 +14,7 @@ using namespace std;
 /* Перечисление для определения вида функции */
 enum RangeType { First, Second, Third } rangeType;
 
-namespace Morozov {
+namespace Vectorflex {
     /* Возведение в степень */
     double raiseToPow(double x, int power) {
     if (x == 0 && power == 0) { throw 1; }
