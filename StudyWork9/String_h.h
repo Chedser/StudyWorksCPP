@@ -13,8 +13,7 @@ using std::string;
 using std::ofstream;
 using std::ifstream;
 
-class TCharArray
-{
+class TCharArray{
 protected:
     size_t len;
     const char* pMem;
@@ -26,15 +25,11 @@ public:
     }
 
     const char& at(const size_t n) const {
-
         return pMem[n];
-
     }
-
 };
 
 class String :public TCharArray {
-
 public:
     String() : TCharArray("") {}
     String(const char* str) : TCharArray(str) {}
@@ -59,19 +54,16 @@ int String::GetLen() {return len;}
 
 std::ostream& operator<< (std::ostream& out, const String& str) {
     for (int i = 0; i < str.len; i++) {
-
         out << str.at(i);
-
     }
-
     return out;
 }
 
 const char& String::operator[](const int index) {
-    
-    if (index >= len) { throw - 1; }
+   if (index >= len) { throw - 1; }
+    return TCharArray::at(index);
+}
 
-    return TCharArray::at(index);}
 String& String::operator+(String& str) {
     String result;
     size_t len1 = GetLen();
@@ -82,26 +74,25 @@ String& String::operator+(String& str) {
     strcat(resultStr, str.pMem);
     result.SetString(resultStr);
     str = result;
-
     return str;
 }
+
 bool operator== (const String& s1, const String& s2) {
     return (s1.pMem == s2.pMem);
 }
+
 bool operator!= (const String& s1, const String& s2) {
     return !(s1.pMem == s2.pMem);
 }
-bool operator> (const String& s1, const String& s2) {
 
+bool operator> (const String& s1, const String& s2) {
     string s1_str(s1.pMem);
     string s2_str(s2.pMem);
     return s1_str > s2_str;
 }
 bool operator< (const String& s1, const String& s2) {
-
     string s1_str(s1.pMem);
     string s2_str(s2.pMem);
 
     return s1_str < s2_str;
-
 }
