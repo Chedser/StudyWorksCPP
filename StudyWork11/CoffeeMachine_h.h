@@ -82,18 +82,12 @@ namespace Vectorflex {
 
         bool CheckReceiptNumber(int);
         string GetReceiptType(int);
-
         
         int GetCurrentReceiptNumber(); // Получить текущий номер рецепта, который ввел пользователь
-
         void InitTimer();
-
         int GetTimer();
-
         bool IsEnoughIngredients(); // Проверяем достаточно ли ингредиентов
- 
         void Processing(); // Готовка кофе
-
         void NotEnoughIngredientsMessage(); // Сообщение о том, что ингредиентов недостаточно
 
         // Файловые операции
@@ -102,9 +96,7 @@ namespace Vectorflex {
         void WriteFile(string);
 
         void AskDrinkYet();
-
         void PrintIngredietnsInfo();
-
     };
-} // namespace Morozov
+} // namespace Vectorflex
 #endif
