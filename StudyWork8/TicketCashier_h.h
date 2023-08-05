@@ -10,8 +10,7 @@ namespace Vectorflex{
 		float revenue; // Cуммарная выручка
 		char date[10]; // Дата
 
-	TicketCashier(){
-	}
+	TicketCashier(){}
 	~TicketCashier(){}
 	};
 }
